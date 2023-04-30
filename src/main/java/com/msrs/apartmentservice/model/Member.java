@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -18,16 +16,24 @@ public class Member {
     @Id
     int memberId;
     String fullName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
+    @JsonFormat(pattern = "dd-mm-yyyy")
     Date DOB;
     String mobileNumber;
     String aadharNumber;
     String panCardNumber;
     int numberOfMemberStaying;
     @ManyToOne
-    @JoinColumn(name = "flat_id")
+    @JoinColumn(name = "flat_Id")
     Flat flat;
-    @OneToMany(mappedBy = "members")
-    Set<Vehicle> vehicles;
+    public Member(Member members) {
+        this.memberId = members.memberId;
+        this.fullName = members.fullName;
+        this.DOB = members.DOB;
+        this.mobileNumber = members.mobileNumber;
+        this.panCardNumber = members.panCardNumber;
+        this.aadharNumber = members.aadharNumber;
+        this.numberOfMemberStaying = members.numberOfMemberStaying;
+        this.flat = members.flat;
+    }
 }
 

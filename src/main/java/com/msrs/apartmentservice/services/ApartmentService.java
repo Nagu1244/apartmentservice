@@ -31,6 +31,7 @@ public class ApartmentService {
     public String updateApartmentDetails(Apartment apartment, Long apartmentId) {
        String details = null;
        Optional<Apartment> apartmentDetails = apartmentRepository.findById(apartmentId);
+
        if(apartmentDetails.isPresent()) {
            Apartment existingDetails = apartmentDetails.get();
            existingDetails.setApartmentOwner(apartment.getApartmentOwner());

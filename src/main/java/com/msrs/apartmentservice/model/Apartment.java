@@ -1,5 +1,6 @@
 package com.msrs.apartmentservice.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@SecondaryTables({
-        @SecondaryTable(name = "flat", pkJoinColumns = @PrimaryKeyJoinColumn(name = "apartment_id"))
-})
+//@SecondaryTables({
+//        @SecondaryTable(name = "flat", pkJoinColumns = @PrimaryKeyJoinColumn(name = "apartment_id"))
+//})
 public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Apartment {
     private String address;
     private String apartmentOwner;
     private String contactNUmber;
-    @OneToMany(mappedBy = "apartment", cascade = CascadeType.ALL)
-    @Column(table = "flat")
+    @OneToMany(mappedBy = "apartment")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Flat> flats;
 }

@@ -2,7 +2,7 @@ package com.msrs.apartmentservice.controllers;
 
 import com.msrs.apartmentservice.model.Member;
 import com.msrs.apartmentservice.services.MemberService;
-import com.msrs.apartmentservice.utllities.CommonConstants;
+import com.msrs.apartmentservice.utils.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;

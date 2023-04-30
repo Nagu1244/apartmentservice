@@ -1,16 +1,13 @@
 package com.msrs.apartmentservice.controllers;
 
 import com.msrs.apartmentservice.model.Apartment;
-import com.msrs.apartmentservice.model.Flat;
 import com.msrs.apartmentservice.services.ApartmentService;
-import com.msrs.apartmentservice.utllities.CommonConstants;
+import com.msrs.apartmentservice.utils.CommonConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping(CommonConstants.APARTMENT_ENTRYPOINT)
 @RestController
