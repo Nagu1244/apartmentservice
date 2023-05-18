@@ -1,4 +1,4 @@
-package com.msrs.apartmentservice.services;
+package com.msrs.apartmentservice.service;
 
 import com.msrs.apartmentservice.model.Vehicle;
 import com.msrs.apartmentservice.repository.VehicleRepository;

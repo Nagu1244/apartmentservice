@@ -1,9 +1,11 @@
 package com.msrs.apartmentservice.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -11,18 +13,19 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-//@SecondaryTables({
-//        @SecondaryTable(name = "flat", pkJoinColumns = @PrimaryKeyJoinColumn(name = "apartment_id"))
-//})
 public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long apartmentId;
-    private String apartmentName;
-    private String address;
-    private String apartmentOwner;
-    private String contactNUmber;
-    @OneToMany(mappedBy = "apartment")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Flat> flats;
+    private Long id;
+    private String floorNumber;
+    private String blockNumber;
+    private String flatNumber;
+    private String flatType;
+    private int numOfWashRooms;
+    private BigDecimal flatRentPrice;
+    private BigDecimal advancePayment;
+    private BigDecimal maintenanceAmount;
+    private String flatStatus;
+    private boolean isForRent;
+    private boolean isForSale;
 }

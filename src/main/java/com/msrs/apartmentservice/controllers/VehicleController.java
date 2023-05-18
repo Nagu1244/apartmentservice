@@ -1,7 +1,7 @@
 package com.msrs.apartmentservice.controllers;
 
 import com.msrs.apartmentservice.model.Vehicle;
-import com.msrs.apartmentservice.services.VehicleService;
+import com.msrs.apartmentservice.service.VehicleService;
 import com.msrs.apartmentservice.utils.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
