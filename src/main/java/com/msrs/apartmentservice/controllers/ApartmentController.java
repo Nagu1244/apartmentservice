@@ -5,6 +5,7 @@ import com.msrs.apartmentservice.model.Apartment;
 import com.msrs.apartmentservice.service.ApartmentService;
 import com.msrs.apartmentservice.utils.CommonConstants;
 import com.msrs.apartmentservice.utils.CustomResponse;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
 
 @RequestMapping(CommonConstants.APARTMENT_ENTRYPOINT)
 @RestController
@@ -23,14 +22,11 @@ public class ApartmentController {
     private ApartmentService apartmentService;
 
     @RequestMapping(value = "/addApartment", method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
-    public ResponseEntity<?> saveApartmentDetails(@RequestBody Apartment apartment) {
+    public ResponseEntity<?> saveApartmentDetails(@RequestBody @Valid Apartment apartmentRequest) {
         ApartmentDtoResponse apartmentResponse = null;
-        if (!Objects.isNull(apartment.getFlatNumber())) {
-            apartmentResponse = apartmentService.saveApartmentDetails(apartment);
+            apartmentResponse = apartmentService.saveApartmentDetails(apartmentRequest);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(CustomResponse.successResponse("success", "flat details added", apartmentResponse));
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request");
     }
 
     @RequestMapping(value = "/updateApartment/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
