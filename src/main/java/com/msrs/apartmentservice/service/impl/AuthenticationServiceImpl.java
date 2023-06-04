@@ -34,7 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public AuthenticationResponse saveUserRequest(RegistrationRequest request) throws Exception {
+    public void saveUserRequest(RegistrationRequest request) throws Exception {
             User user = User.builder()
                     .userName(request.getUserName())
                     .email(request.getEmail())
@@ -42,10 +42,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     .password(passwordEncoder.encode(request.getPassword()))
                     .build();
             userRepository.save(user);
-            String jwtToken = jwtService.generateToken(user);
-            return AuthenticationResponse.builder()
-                    .token(jwtToken)
-                    .build();
     }
 
     @Override

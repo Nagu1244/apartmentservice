@@ -1,15 +1,13 @@
 package com.msrs.apartmentservice.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString
 public class ApartmentDtoResponse {
     private String floorNumber;

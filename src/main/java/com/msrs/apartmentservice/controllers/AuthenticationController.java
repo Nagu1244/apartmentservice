@@ -25,8 +25,8 @@ public class AuthenticationController {
     @RequestMapping(value = "register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> saveUserRequest(@RequestBody RegistrationRequest request) throws Exception {
         if (request != null) {
-            AuthenticationResponse authenticationResponse = authenticationService.saveUserRequest(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(CustomResponse.successResponse("201", "User Registered Successfully", null));
+            authenticationService.saveUserRequest(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("User registered Successfully");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

@@ -5,7 +5,7 @@ import com.msrs.apartmentservice.dtos.RegistrationRequest;
 import com.msrs.apartmentservice.dtos.AuthenticationResponse;
 
 public interface AuthenticationService {
-    public AuthenticationResponse saveUserRequest(RegistrationRequest request) throws Exception;
+    public void saveUserRequest(RegistrationRequest request) throws Exception;
 
     String authenticateUser(AuthenticationRequest authenticationRequest) throws Exception;
 }
